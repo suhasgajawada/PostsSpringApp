@@ -6,7 +6,7 @@
 
     <groupId>com.example.demo</groupId>
     <artifactId>springboot-jsonplaceholder</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <!-- ✅ Add Spring Boot Parent -->
     <parent>
@@ -51,6 +51,9 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.example.demo.App</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
