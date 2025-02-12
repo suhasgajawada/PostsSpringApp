@@ -13,6 +13,19 @@ pipeline {
     }
 
     stages {
+        // pull the code from the repository
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/suhasgajawada/PostsSpringApp.git', branch: 'master'
+                script {
+                    try {
+                        checkout scm
+                    } catch (Exception e) {
+                        error "Checkout stage failed: ${e.message}"
+                    }
+                }
+            }
+        }
         stage('Testing') {
             steps {
                 script {
