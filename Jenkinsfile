@@ -16,7 +16,6 @@ pipeline {
         // pull the code from the repository
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/suhasgajawada/PostsSpringApp.git', branch: 'master'
                 script {
                     try {
                         checkout scm
