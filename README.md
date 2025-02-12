@@ -7,7 +7,7 @@ To Run Jenkins:
 4. Install the necessary plugins.
 5. Create an admin user.
 6. Start using Jenkins.
-```
+
 
 To Create Docker Image:
 1. Run the following command in the terminal:

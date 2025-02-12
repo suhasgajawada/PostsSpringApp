@@ -4,6 +4,7 @@ pipeline {
     tools {
         maven "maven"
         jdk "jdk23"
+        sonarQube "Sonar Scanner" // Add SonarQube scanner tool
     }
 
     environment {
@@ -13,7 +14,6 @@ pipeline {
     }
 
     stages {
-        // pull the code from the repository
         stage('Checkout') {
             steps {
                 script {
@@ -44,6 +44,17 @@ pipeline {
                         bat "mvn clean package -f \"${POM_FILE}\""
                     } catch (Exception e) {
                         error "Compile stage failed: ${e.message}"
+                    }
+                }
+            }
+        }
+        stage('SonarQube Analysis') { // New stage for SonarQube analysis
+            steps {
+                script {
+                    try {
+                        bat "mvn sonar:sonar -Dsonar.projectKey=Spring-Demo-App -Dsonar.projectName='Spring Demo App' -Dsonar.host.url=http://localhost:9000 -Dsonar.token=sqp_676008355af18a461a3120b7b2471952b6c772f3"
+                    } catch (Exception e) {
+                        error "SonarQube Analysis stage failed: ${e.message}"
                     }
                 }
             }
